@@ -3,5 +3,46 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-  }
+    "api-query": {
+      "projectType": "library",
+      "root": "projects/api-query",
+      "sourceRoot": "projects/api-query/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/api-query/tsconfig.lib.json",
+            "project": "projects/api-query/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/api-query/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/api-query/src/test.ts",
+            "tsConfig": "projects/api-query/tsconfig.spec.json",
+            "karmaConfig": "projects/api-query/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/api-query/tsconfig.lib.json",
+              "projects/api-query/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "api-query"
 }
